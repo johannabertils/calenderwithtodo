@@ -14,6 +14,7 @@ class CreateTask extends React.Component {
         evt.preventDefault();
         console.log("sparat");
         this.props.newTask(this.state.inputText); 
+        this.state.inputText = "";
     }
 
     render() {
