@@ -47,30 +47,29 @@ export default function App() {
         console.log(myArray.id);
         setArray(myArray)
         console.log(array);
-        // if (citiesArray.includes(myArray.id)) {
-        //     console.log("property already exists");
-        //   } else {
-        //     citiesArray.push(cityId);
-        //   }
     }
 
+// localstorage
     useEffect(() => {
         const getTasks = localStorage.getItem('data')
         if (getTasks) {
             setArray(JSON.parse(getTasks));
             console.log(getTasks);
         } else {
+            localStorage.setItem('data', "[]")
             console.log("no tasks");
         }
     }, []);
 
+    // check if localstorage has value, if it does push array into the array
     useEffect(() => {
-        localStorage.setItem('data', JSON.stringify(array));
+        let newArray; 
+        if (!localStorage ['data']) newArray = [];
+        else newArray = JSON.parse(localStorage['data']);
+        localStorage.clear();
+        newArray.push(array);
+        localStorage.setItem('data', JSON.stringify(newArray));
     }, [array]);
-
-    // useEffect(() => {
-    //     localStorage.setItem('data', JSON.stringify(array));
-    // }, [array]);
 
     return (
         <div className="main">
