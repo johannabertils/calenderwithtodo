@@ -13,43 +13,64 @@ export default function App() {
     // const [data, setData] = useState(0);
 
     // Get value of inputtext from createTask.js & change it
-
     const getSelectedDate = (date) => {
         console.log(date);
         setDate(date);
         console.log(selectedDate);
-
     }
 
     const saveNewTask = (getTask) => {
         console.log(getTask);
         setTask(getTask);
-        console.log(task);
-        createArray();
+        console.log(task)
     }
 
-    const createArray = () => {
+    // activate createArray function
+    useEffect(() => {
+        CreateArray();
+    }, [task]);
+
+    const CreateArray = () => {
         const taskDate = selectedDate;
         const tasktodo = task;
         const key = Math.random();
         console.log(key);
         console.log(taskDate);
 
-
         const myArray = {
-            "id": key,
-            "date": taskDate,
-            "task": tasktodo,
-            "completed": false
+            id: key,
+            date: taskDate,
+            task: tasktodo,
+            completed: false
         }
         console.log(myArray);
+        console.log(myArray.id);
         setArray(myArray)
         console.log(array);
+        // if (citiesArray.includes(myArray.id)) {
+        //     console.log("property already exists");
+        //   } else {
+        //     citiesArray.push(cityId);
+        //   }
     }
 
     useEffect(() => {
-        localStorage.setItem('data', JSON.stringify (array));
+        const getTasks = localStorage.getItem('data')
+        if (getTasks) {
+            setArray(JSON.parse(getTasks));
+            console.log(getTasks);
+        } else {
+            console.log("no tasks");
+        }
+    }, []);
+
+    useEffect(() => {
+        localStorage.setItem('data', JSON.stringify(array));
     }, [array]);
+
+    // useEffect(() => {
+    //     localStorage.setItem('data', JSON.stringify(array));
+    // }, [array]);
 
     return (
         <div className="main">
