@@ -1,3 +1,7 @@
+.todolist{
+    max-width: 400px;
+    text-align: center;
+}
 
 p{
     font-size: 20px;
@@ -14,7 +18,22 @@ p{
     height: 30px; 
 }
 
+.notaskview{
+    width: 400px; 
+    text-align: center;
+}
+
 .notasksmessage{
     font-size: 20px;
 }
 
+.showlistbtn{
+    background-color: pink; 
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+}

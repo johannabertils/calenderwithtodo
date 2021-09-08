@@ -16,7 +16,7 @@ export default function ToDoList() {
         setShowList(true);
         let dataFromLocalStorage = localStorage.getItem('data');
         if (dataFromLocalStorage === null) {
-           let noTasks = <div className="notasksmessage">You have no tasks to do!</div>; 
+           let noTasks = <div className="notaskview"> <p className="notasksmessage">You have no tasks to do!</p> </div>; 
             setText(noTasks )
         } else {
             printList(dataFromLocalStorage);
@@ -37,9 +37,9 @@ export default function ToDoList() {
         setText(printArrayOfTasks)
     }
 
-    return <div>
+    return <div className="todolist">
         <h1>To do list</h1>
-        <button onClick={showItemsOnClick}>Show the to do list</button>
+        <button className="showlistbtn" onClick={showItemsOnClick}>Show the to do list</button>
         {showList ? <Text /> : null}
     </div>;
 
