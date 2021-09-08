@@ -70,7 +70,7 @@ export default function Calendar({selectedDate}) {
 
 function targetedDay (day) {
    let taskDay = day.format("MM/DD/YYYY").toString();
-   console.log(taskDay);
+//    console.log(taskDay);
    selectedDate(taskDay);
 }
 }

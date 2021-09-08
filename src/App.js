@@ -15,16 +15,16 @@ export default function App() {
     // Get value of date from calendar and update selectedDate with setDate 
 
     const getSelectedDate = (date) => {
-        console.log(date);
+        // console.log(date);
         setDate(date);
-        console.log(selectedDate);
+        // console.log(selectedDate);
     }
 
  // Get value of inputtext from createTask.js & setTask to the value
     const saveNewTask = (getTask) => {
-        console.log(getTask);
+        // console.log(getTask);
         setTask(getTask);
-        console.log("hejsan" + task)
+        // console.log("hejsan" + task)
         CreateArray(getTask);
     }
 
@@ -33,8 +33,8 @@ export default function App() {
         const taskDate = selectedDate;
         const tasktodo = getTask;
         const key = Math.random();
-        console.log(key);
-        console.log(taskDate);
+        // console.log(key);
+        // console.log(taskDate);
 
         const myArray = {
             id: key,
@@ -42,10 +42,10 @@ export default function App() {
             task: tasktodo,
             completed: false
         }
-        console.log(myArray);
-        console.log(myArray.id);
+        // console.log(myArray);
+        // console.log(myArray.id);
         setArray(myArray)
-        console.log(array);
+        // console.log(array);
     }
 
     // check if localstorage has value, if it does push the array of information about taskinto into the array in localstorage
@@ -56,7 +56,7 @@ export default function App() {
         else newArray = JSON.parse(localStorage['data']);
         localStorage.clear();
         newArray.push(array);
-        console.log("kör");
+        // console.log("kör");
         localStorage.setItem('data', JSON.stringify(newArray));
     }
     }, [array]);
@@ -66,7 +66,7 @@ export default function App() {
             <div className="calendar"> <Calendar selectedDate={getSelectedDate} /></div>
             <div className="Day"><CreateTask inputText={task} newTask={saveNewTask} /></div>
             <div className="ToDoList">< ToDoList /></div>
-            <div className="DayView"><DayView /></div>
+            <div className="DayView"><DayView selectedDateValue = {selectedDate} /></div>
         </div>
     )
 }

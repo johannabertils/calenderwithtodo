@@ -4,18 +4,29 @@
 }
 
 p{
-    font-size: 20px;
+    font-size: 15px;
+
 }
 
 .itemList button{
-    font-size: 20px;
+    font-size: 15px;
+    height: 30px; 
     float: right; 
+    background-color: pink; 
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    transition-duration: 0.4s; 
 }
 
 .itemList{
-    background-color: pink; 
+    color: purple;
     width: 400px; 
-    height: 30px; 
+    height: 20px; 
+    border-bottom: 2px dotted pink; 
+
 }
 
 .notaskview{
