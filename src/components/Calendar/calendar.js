@@ -52,6 +52,17 @@ export default function Calendar({selectedDate}) {
                 <div className ="arrowFront" onClick={() =>setM (nextMonth())}>{String.fromCharCode(187)}</div>
             </div>
 
+            <div className="days">
+               <p>Sun</p>
+                <p>Mon</p>
+                <p>Tue</p>
+                <p>Wed</p>
+                <p>Thurs</p>
+                <p>Fri</p>
+                <p>Sat</p>
+               
+            </div>
+
             <div className="calendar">
                 {calendar.map((week) => (
                     <div>
