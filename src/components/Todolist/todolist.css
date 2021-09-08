@@ -1,0 +1,16 @@
+
+p{
+    font-size: 20px;
+}
+
+.itemList button{
+    font-size: 20px;
+    float: right; 
+}
+
+.itemList{
+    background-color: pink; 
+    width: 400px; 
+    height: 30px; 
+}
+
