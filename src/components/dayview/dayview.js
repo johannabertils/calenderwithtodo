@@ -3,7 +3,7 @@ import './dayview.css';
 
 export default function Dayview({ selectedDateValue }) {
 
-    const [clickedOnDate, setclickedOnDate] = useState();
+    const [clickedOnDate, setclickedOnDate] = useState(0);
     const [LocalA, setLocalA] = useState();
     const [listText, setlistText] = useState();
 
@@ -25,7 +25,7 @@ export default function Dayview({ selectedDateValue }) {
 
      // when clicking on mark as done button
      function done(item) {
-        console.log("click" + item.id);
+
         let id = item.id;
         removeItem(id);
     }
@@ -48,22 +48,24 @@ export default function Dayview({ selectedDateValue }) {
     }
 
     function showTasksOfSelectedDate(clickedOnDate) {
-        console.log("hej" + clickedOnDate);
         let getDataFromLocalStorage = localStorage.getItem('data');
         let parseTasks = JSON.parse(getDataFromLocalStorage)
-        
-        console.log("hej" + parseTasks);
         setLocalA(parseTasks);
+        let matchfound = "";
         let writeText = parseTasks.map(function (item) {
             if (item.date === clickedOnDate && item.completed === false) {
-                console.log("yes");
+                matchfound = true;
                 return <div className="dayviewList"><p> {item.date} {item.task} <button onClick={() => done(item)}> Mark as done</button></p></div>;
             } 
         });
         setlistText(writeText)
+        if (!matchfound && clickedOnDate != undefined){
+            let nomatch = <div>You have no tasks to do this day!</div>
+            setlistText(nomatch)
+        }
     }
 
 
-    return <div><h1><p>What to do on</p>{selectedDateValue}</h1><p>{list}</p></div>;
+    return <div><h1>{selectedDateValue}</h1><p>{list}</p></div>;
 
 }

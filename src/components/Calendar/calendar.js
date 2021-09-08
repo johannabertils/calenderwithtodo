@@ -72,16 +72,24 @@ export default function Calendar({ selectedDate }) {
                                 <div className={m.isSame(day, "day") ? "selected" : ""}> {day.format("D").toString()}  </div>
                                 <p>1 todo</p>
 
-                                </div>
-                        ))}
                             </div>
                         ))}
-                    </div></div>)
+                    </div>
+                ))}
+            </div></div>)
 
 
-function targetedDay (day) {
-                let taskDay = day.format("MM/DD/YYYY").toString();
-//    console.log(taskDay);
-   selectedDate(taskDay);
-}
+    function targetedDay(day) {
+        let taskDay = day.format("MM/DD/YYYY").toString();
+        selectedDate(taskDay);
+        let getDataFromLocalStorage = localStorage.getItem('data');
+        let data = JSON.parse(getDataFromLocalStorage)
+        let countOccurences = 
+            data.filter(function (value) {
+                return value.date === taskDay;
+            }).length
+
+        console.log(countOccurences);
+
+    }
 }
