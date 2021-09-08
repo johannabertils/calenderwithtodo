@@ -7,18 +7,20 @@ import './style.css'
 
 export default function App() {
 
+    // states
     const [selectedDate, setDate] = useState();
     const [task, setTask] = useState();
     const [array, setArray] = useState();
-    // const [data, setData] = useState(0);
 
-    // Get value of inputtext from createTask.js & change it
+    // Get value of date from calendar and update selectedDate with setDate 
+
     const getSelectedDate = (date) => {
         console.log(date);
         setDate(date);
         console.log(selectedDate);
     }
 
+ // Get value of inputtext from createTask.js & setTask to the value
     const saveNewTask = (getTask) => {
         console.log(getTask);
         setTask(getTask);
@@ -26,11 +28,7 @@ export default function App() {
         CreateArray(getTask);
     }
 
-    // activate createArray function
-    // useEffect(() => {
-    //     CreateArray();
-    // }, [task]);
-
+    // create and array of information about task
     const CreateArray = (getTask) => {
         const taskDate = selectedDate;
         const tasktodo = getTask;
@@ -50,19 +48,7 @@ export default function App() {
         console.log(array);
     }
 
-// localstorage
-    // useEffect(() => {
-    //     const getTasks = localStorage.getItem('data')
-    //     if (getTasks) {
-    //         setArray(JSON.parse(getTasks));
-    //         console.log(getTasks);
-    //     } else {
-    //         localStorage.setItem('data', "[]")
-    //         console.log("no tasks");
-    //     }
-    // }, []);
-
-    // check if localstorage has value, if it does push array into the array
+    // check if localstorage has value, if it does push the array of information about taskinto into the array in localstorage
     useEffect(() => {
         if (array != null){
         let newArray; 
@@ -79,7 +65,7 @@ export default function App() {
         <div className="main">
             <div className="calendar"> <Calendar selectedDate={getSelectedDate} /></div>
             <div className="Day"><CreateTask inputText={task} newTask={saveNewTask} /></div>
-            <div className="ToDoList"><ToDoList /></div>
+            <div className="ToDoList">< ToDoList /></div>
             <div className="DayView"><DayView /></div>
         </div>
     )
