@@ -1,0 +1,32 @@
+.dayviewList{
+    color: purple;
+    width: 400px; 
+    height: 20px; 
+    border-bottom: 2px dotted pink; 
+}
+
+.dayviewList button{
+    font-size: 15px;
+    height: 30px; 
+    float: right; 
+    background-color: pink; 
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    transition-duration: 0.4s; 
+}
+
+.dayviewList button:hover{
+    background-color: magenta; 
+    cursor: pointer;
+}
+
+h1{
+    color:magenta; 
+}
+
+p{
+    color:pink; 
+}

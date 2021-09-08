@@ -1,4 +1,5 @@
 import React from 'react';
+import './createtask.css';
 
 class CreateTask extends React.Component {
     state = {
@@ -19,7 +20,7 @@ class CreateTask extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className ="createTask">
                 <h1>Create new task</h1>
                 <p>Creates task on selected day</p>
                 <form onSubmit= {this.onSubmit}>

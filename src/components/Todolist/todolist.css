@@ -5,7 +5,6 @@
 
 p{
     font-size: 15px;
-
 }
 
 .itemList button{
@@ -51,6 +50,11 @@ p{
 }
 
 .showlistbtn:hover{
+    background-color: magenta; 
+    cursor: pointer;
+}
+
+.donebtn:hover{
     background-color: magenta; 
     cursor: pointer;
 }

@@ -1,5 +1,6 @@
 .calendar{
     max-width: 400px;
+    height: 300px;
 }
 
 .calendar .day{
@@ -7,7 +8,6 @@
  width: calc(100% / 7);
  height: 44px;
  display: inline-block;
- background-color: white;
  padding: 0;
  margin: 0;
  box-sizing: border-box;
@@ -26,10 +26,32 @@
 
 .Calendarheader{
     max-width: 400px;
+    height: 50px;
     font-size: 30px;
+    background-color: pink;
 }
 
 .selected{
-    background-color: darkorchid;
+    background-color: magenta;
     height: 44px;
+}
+
+.arrowBack {
+    width: 50px;
+    display: inline-block;
+    text-align: center;
+    float: left;
+}
+
+.curentMonth {
+    width: 300px;
+    display: inline-block;
+   text-align: center;
+}
+
+.arrowFront {
+    width: 50px;
+    float:right;
+    text-align: center;
+    display: inline-block;
 }

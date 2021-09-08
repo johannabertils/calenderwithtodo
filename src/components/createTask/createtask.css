@@ -1,0 +1,30 @@
+input{
+    background-color: pink;
+    border: 1px solid magenta; 
+    width: 200px;
+    height: 30px;
+    
+}
+
+form button{
+    font-size: 15px;
+    height: 30px; 
+    background-color: pink; 
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    transition-duration: 0.4s; 
+}
+
+form button:hover{
+    background-color: magenta; 
+    cursor: pointer;
+}
+.createTask h1{
+    color: black;
+}
+
+.createTask p{
+    color: magenta;
+}

@@ -45,7 +45,7 @@ export default function ToDoList() {
             .map(item =>
                 <div className="itemList">
                     <p className="taskname"> {item.date}  {item.task}
-                        <button onClick={() => markAsDone(item)}> Mark as done</button></p></div>)
+                        <button className="donebtn" onClick={() => markAsDone(item)}> Mark as done</button></p></div>)
 
         setText(printArrayOfTasks)
 

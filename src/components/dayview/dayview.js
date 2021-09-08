@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import './dayview.css';
 
 export default function Dayview({ selectedDateValue }) {
 
@@ -33,11 +34,12 @@ export default function Dayview({ selectedDateValue }) {
         let writeText = parseTasks.map(function (item) {
             if (item.date === clickedOnDate) {
                 console.log("yes");
-                return <div><p> {item.date} {item.task} <button> Mark as done</button></p></div>;
+                return <div className="dayviewList"><p> {item.date} {item.task} <button> Mark as done</button></p></div>;
             } 
         });
         setlistText(writeText)
     }
+
 
     return <div><h1><p>What to do on</p>{selectedDateValue}</h1><p>{list}</p></div>;
 
