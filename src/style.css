@@ -3,6 +3,7 @@
     height: 400px;
     display: grid;
   grid-template-columns: 500px 500px;
+  grid-template-rows: 500px 500px;
   grid-row: auto auto;
   grid-column-gap: 20px;
   grid-row-gap: 20px; 

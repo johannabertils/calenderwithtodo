@@ -23,18 +23,41 @@ export default function Dayview({ selectedDateValue }) {
 
     }, [clickedOnDate]);
 
+     // when clicking on mark as done button
+     function done(item) {
+        console.log("click" + item.id);
+        let id = item.id;
+        removeItem(id);
+    }
+
+    function removeItem(id) {
+        let getDataFromLocalStorage = localStorage.getItem('data');
+        let oldArray = JSON.parse(getDataFromLocalStorage)
+
+        let newArray = oldArray.map(function (item) {
+            if (item.id === id) {
+             item.completed = true; 
+            } 
+            return item;
+        });
+
+        setLocalA(newArray)
+        localStorage.clear();
+        localStorage.setItem('data', JSON.stringify(newArray));
+        showTasksOfSelectedDate(clickedOnDate);
+    }
+
     function showTasksOfSelectedDate(clickedOnDate) {
         console.log("hej" + clickedOnDate);
         let getDataFromLocalStorage = localStorage.getItem('data');
         let parseTasks = JSON.parse(getDataFromLocalStorage)
-
         
         console.log("hej" + parseTasks);
         setLocalA(parseTasks);
         let writeText = parseTasks.map(function (item) {
-            if (item.date === clickedOnDate) {
+            if (item.date === clickedOnDate && item.completed === false) {
                 console.log("yes");
-                return <div className="dayviewList"><p> {item.date} {item.task} <button> Mark as done</button></p></div>;
+                return <div className="dayviewList"><p> {item.date} {item.task} <button onClick={() => done(item)}> Mark as done</button></p></div>;
             } 
         });
         setlistText(writeText)

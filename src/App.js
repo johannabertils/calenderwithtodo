@@ -52,7 +52,7 @@ export default function App() {
     useEffect(() => {
         if (array != null){
         let newArray; 
-        if (!localStorage ['data']) newArray = [];
+        if (!localStorage['data']) newArray = [];
         else newArray = JSON.parse(localStorage['data']);
         localStorage.clear();
         newArray.push(array);

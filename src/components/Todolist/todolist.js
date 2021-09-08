@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import moment from 'moment';
 import './todolist.css';
 
 export default function ToDoList() {
@@ -19,7 +18,7 @@ export default function ToDoList() {
             let noTasks = <div className="notaskview"> <p className="notasksmessage">You have no tasks to do!</p> </div>;
             setText(noTasks)
         } else {
-            printList(dataFromLocalStorage);
+            printList();
         }
     }
 
@@ -28,27 +27,44 @@ export default function ToDoList() {
         console.log("click" + item.id);
         let id = item.id;
         removeItem(id);
+        printList(); 
     }
 
-    function removeItem(id, localStorageArray) {
-        console.log("iD" + id);
-        let hej = localStorageArray;
-        console.log("DD" + hej);
-        // setlocalStorageArray(localStorageArray.filter(item => item.id == id))
+    function removeItem(id) {
+        let getDataFromLocalStorage = localStorage.getItem('data');
+        let oldArray = JSON.parse(getDataFromLocalStorage)
+
+        let newArray = oldArray .map(function (item) {
+            if (item.id === id) {
+             item.completed = true; 
+            } 
+            return item;
+        });
+
+        setlocalStorageArray(newArray)
+        localStorage.clear();
+        localStorage.setItem('data', JSON.stringify(newArray));
     }
     // Print list of tasks and sort by date
-    const printList = (dataFromLocalStorage) => {
-        let parsedTasks = JSON.parse(dataFromLocalStorage);
+    const printList = () => {
+        let data = localStorage.getItem('data');
+        let parsedTasks = JSON.parse(data);
         setlocalStorageArray(parsedTasks)
+        let foundincomplite = false;
         let printArrayOfTasks = parsedTasks
             .sort((a, b) => a.date > b.date)
-            .map(item =>
-                <div className="itemList">
+            .map(item => {
+                if (item.completed === false) {
+                    foundincomplite = true;
+                return <div className="itemList">
                     <p className="taskname"> {item.date}  {item.task}
-                        <button className="donebtn" onClick={() => markAsDone(item)}> Mark as done</button></p></div>)
-
+                        <button className="donebtn" onClick={() => markAsDone(item)}> Mark as done</button></p></div>
+                    } })
+                    if (foundincomplite === false){
+                        let noTasks = <div className="notaskview"> <p className="notasksmessage">You have no tasks to do!</p> </div>;
+                    printArrayOfTasks=noTasks;
+                    }
         setText(printArrayOfTasks)
-
     }
 
     return <div className="todolist">

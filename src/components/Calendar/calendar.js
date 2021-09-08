@@ -3,7 +3,7 @@ import moment from 'moment';
 import './calendar.css';
 
 // creates days, per week per month
-export default function Calendar({selectedDate}) {
+export default function Calendar({ selectedDate }) {
 
     const [calendar, setCalendar] = useState([]);
     const [m, setM] = useState(moment());
@@ -12,8 +12,8 @@ export default function Calendar({selectedDate}) {
         const dayToBegin = m.clone().startOf("month").startOf("week");
         const dayToEnd = m.clone().endOf("month").endOf("weeks");
         const day = dayToBegin.clone().subtract(1, "day");
-        const viewCalendar= [];
-    
+        const viewCalendar = [];
+
         while (day.isBefore(dayToEnd, "day")) {
             viewCalendar.push(
                 Array(7)
@@ -25,42 +25,42 @@ export default function Calendar({selectedDate}) {
     }, [m])
 
     // get current month
-    function currentMonthName(){
+    function currentMonthName() {
         return m.format("MMMM")
     }
 
     // get current year
-    function currentYear(){
+    function currentYear() {
         return m.format("YYYY")
     }
 
-      function previousMonth(){
+    function previousMonth() {
         return m.clone().subtract(1, "month")
     }
 
-    function nextMonth(){
+    function nextMonth() {
         return m.clone().add(1, "month")
     }
 
     // Print out the calander
     return (
 
-        <div className= "calendar">
+        <div className="calendar">
             <div className="Calendarheader">
-                <div className ="arrowBack" onClick={() =>setM (previousMonth())}>{String.fromCharCode(171)}</div>
-                <div className = "curentMonth">{currentMonthName()} {currentYear()}</div>
-                <div className ="arrowFront" onClick={() =>setM (nextMonth())}>{String.fromCharCode(187)}</div>
+                <div className="arrowBack" onClick={() => setM(previousMonth())}>{String.fromCharCode(171)}</div>
+                <div className="curentMonth">{currentMonthName()} {currentYear()}</div>
+                <div className="arrowFront" onClick={() => setM(nextMonth())}>{String.fromCharCode(187)}</div>
             </div>
 
             <div className="days">
-               <p>Sun</p>
+                <p>Sun</p>
                 <p>Mon</p>
                 <p>Tue</p>
                 <p>Wed</p>
                 <p>Thurs</p>
                 <p>Fri</p>
                 <p>Sat</p>
-               
+
             </div>
 
             <div className="calendar">
@@ -68,19 +68,19 @@ export default function Calendar({selectedDate}) {
                     <div>
                         {week.map((day) => (
                             <div className="day" id={day}
-                                onClick={() => {setM(day); targetedDay(day);}}>
+                                onClick={() => { setM(day); targetedDay(day); }}>
                                 <div className={m.isSame(day, "day") ? "selected" : ""}> {day.format("D").toString()}  </div>
-    
-                           
+                                <p>1 todo</p>
+
+                                </div>
+                        ))}
                             </div>
                         ))}
-                    </div>
-                ))}
-            </div></div>)
+                    </div></div>)
 
 
 function targetedDay (day) {
-   let taskDay = day.format("MM/DD/YYYY").toString();
+                let taskDay = day.format("MM/DD/YYYY").toString();
 //    console.log(taskDay);
    selectedDate(taskDay);
 }
