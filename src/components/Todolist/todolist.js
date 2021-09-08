@@ -38,8 +38,7 @@ export default function ToDoList() {
     }
 
     return <div className="todolist">
-        <h1>To do list</h1>
-        <button className="showlistbtn" onClick={showItemsOnClick}>Show the to do list</button>
+        <button className="showlistbtn" onClick={showItemsOnClick}>Show the to-do-list</button>
         {showList ? <Text /> : null}
     </div>;
 
