@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import moment from 'moment';
 import './todolist.css';
 
-
 export default function ToDoList() {
-
 
     const [showList, setShowList] = useState(false);
     const [text, setText] = useState();
@@ -12,34 +11,31 @@ export default function ToDoList() {
     const Text = () => <div>{text}</div>;
 
     // when clicking on showlist btn -> if value in localstorage acitvate printList function
-    function showItemsOnClick(evt, Text) {
-        console.log(localStorage.data);
+    function showItemsOnClick(evt) {
         evt.preventDefault();
         setShowList(true);
-        console.log("hello there");
-        var dataFromLocalStorage = localStorage.getItem('data');
+        let dataFromLocalStorage = localStorage.getItem('data');
         if (dataFromLocalStorage === null) {
-            setText("No tasks")
-            console.log("no tasks");
+           let noTasks = <div className="notasksmessage">You have no tasks to do!</div>; 
+            setText(noTasks )
         } else {
             printList(dataFromLocalStorage);
         }
     }
 
-    // Print tasklist
+    // Print list of tasks and sort by date
 
     const printList = (dataFromLocalStorage) => {
-        var getTasks = JSON.parse(dataFromLocalStorage);
-        var dates = getTasks.map(item =>
+        let parsedTasks = JSON.parse(dataFromLocalStorage);
+        let printArrayOfTasks = parsedTasks
+        .sort((a, b) => a.date > b.date)
+        .map(item =>
             <div className="itemList">
                 <p className="taskname"> {item.date} {item.task}
                     <button>Mark as done</button></p></div>)
-        setText(dates)
-        // const myArrayTasks = movies2;
-        console.log("my array är" + dates);
+    
+        setText(printArrayOfTasks)
     }
-
-
 
     return <div>
         <h1>To do list</h1>
