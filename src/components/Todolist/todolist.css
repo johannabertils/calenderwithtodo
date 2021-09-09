@@ -1,6 +1,5 @@
 .todolist{
     max-width: 400px;
-    text-align: center;
 }
 
 p{
@@ -11,12 +10,10 @@ p{
     font-size: 15px;
     height: 30px; 
     float: right; 
-    background-color: pink; 
+    background-color: #E8BCB5; 
     border: none;
     color: white;
-    text-align: center;
     text-decoration: none;
-    display: inline-block;
     transition-duration: 0.4s; 
 }
 
@@ -24,13 +21,12 @@ p{
     color: purple;
     width: 400px; 
     height: 20px; 
-    border-bottom: 2px dotted pink; 
+    border-bottom: 2px dotted #E8BCB5; 
 
 }
 
 .notaskview{
     width: 400px; 
-    text-align: center;
 }
 
 .notasksmessage{
@@ -38,7 +34,7 @@ p{
 }
 
 .showlistbtn{
-    background-color: pink; 
+    background-color: #E8BCB5; 
     border: none;
     color: white;
     padding: 15px 32px;
@@ -50,11 +46,11 @@ p{
 }
 
 .showlistbtn:hover{
-    background-color: magenta; 
+    background-color: #EF8F8F; 
     cursor: pointer;
 }
 
-.donebtn:hover{
-    background-color: magenta; 
+.itemList button:hover{
+    background-color: #EF8F8F; 
     cursor: pointer;
 }

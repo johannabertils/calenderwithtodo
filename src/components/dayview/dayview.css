@@ -1,15 +1,15 @@
 .dayviewList{
-    color: purple;
+    color: #E8BCB5;
     width: 400px; 
     height: 20px; 
-    border-bottom: 2px dotted pink; 
+    border-bottom: 2px dotted #E8BCB5; 
 }
 
 .dayviewList button{
     font-size: 15px;
     height: 30px; 
     float: right; 
-    background-color: pink; 
+    background-color: #E8BCB5; 
     border: none;
     color: white;
     text-align: center;
@@ -19,14 +19,14 @@
 }
 
 .dayviewList button:hover{
-    background-color: magenta; 
+    background-color:#EF8F8F; 
     cursor: pointer;
 }
 
 h1{
-    color:magenta; 
+    color:#EF8F8F; 
 }
 
 p{
-    color:pink; 
+    color:#E8BCB5; 
 }

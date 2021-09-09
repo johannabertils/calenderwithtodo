@@ -7,6 +7,7 @@ export default function Calendar({ selectedDate }) {
 
     const [calendar, setCalendar] = useState([]);
     const [m, setM] = useState(moment());
+    const [count, setCount] = useState(moment());
 
     useEffect(() => {
         const dayToBegin = m.clone().startOf("month").startOf("week");
@@ -19,6 +20,7 @@ export default function Calendar({ selectedDate }) {
                 Array(7)
                     .fill(0)
                     .map(() => day.add(1, "day").clone())
+                    
             );
         }
         setCalendar(viewCalendar);
@@ -40,6 +42,28 @@ export default function Calendar({ selectedDate }) {
 
     function nextMonth() {
         return m.clone().add(1, "month")
+    }
+
+    function checkLocalStorage(day) {
+        let getDataFromLocalStorage = localStorage.getItem('data');
+        let data = JSON.parse(getDataFromLocalStorage)
+        let getday = day.format("MM/DD/YYYY")
+
+        if (getDataFromLocalStorage === null) {
+            console.log("no data");
+        } else {
+            checkOccurences(data, getday)
+        }
+
+    }
+
+    function checkOccurences(data, getday) {
+        let countOccurences =
+            data.filter(function (value) {
+                return value.date === getday;
+            }).length
+
+        console.log(getday + "count" + "" + countOccurences);
     }
 
     // Print out the calander
@@ -67,29 +91,22 @@ export default function Calendar({ selectedDate }) {
                 {calendar.map((week) => (
                     <div>
                         {week.map((day) => (
-                            <div className="day" id={day}
+                            <div className="day" id={day} setvalue={checkLocalStorage(day)}
                                 onClick={() => { setM(day); targetedDay(day); }}>
-                                <div className={m.isSame(day, "day") ? "selected" : ""}> {day.format("D").toString()}  </div>
-                                <p>1 todo</p>
-
+                                <div className={m.isSame(day, "day") ? "selected" : ""}> {day.format("D").toString()} <p className="countedTasks">Tasks: 1</p></div>
                             </div>
+
                         ))}
                     </div>
                 ))}
             </div></div>)
 
 
+
     function targetedDay(day) {
         let taskDay = day.format("MM/DD/YYYY").toString();
         selectedDate(taskDay);
-        let getDataFromLocalStorage = localStorage.getItem('data');
-        let data = JSON.parse(getDataFromLocalStorage)
-        let countOccurences = 
-            data.filter(function (value) {
-                return value.date === taskDay;
-            }).length
-
-        console.log(countOccurences);
-
+        console.log("day" + day.key);
     }
+
 }

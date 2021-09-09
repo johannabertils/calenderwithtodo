@@ -64,9 +64,12 @@ export default function App() {
     return (
         <div className="main">
             <div className="calendar"> <Calendar selectedDate={getSelectedDate} /></div>
-            <div className="Day"><CreateTask inputText={task} newTask={saveNewTask} /></div>
-            <div className="ToDoList">< ToDoList /></div>
+            <div>
+            <div className="createtask"><CreateTask inputText={task} newTask={saveNewTask} /></div>
             <div className="DayView"><DayView selectedDateValue = {selectedDate} /></div>
+            <div className="ToDoList">< ToDoList /></div>
+            </div>
+
         </div>
     )
 }

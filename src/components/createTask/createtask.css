@@ -1,6 +1,6 @@
 input{
-    background-color: pink;
-    border: 1px solid magenta; 
+    background-color: #E8BCB5;
+    border: 1px solid #EF8F8F; 
     width: 200px;
     height: 30px;
     
@@ -9,7 +9,7 @@ input{
 form button{
     font-size: 15px;
     height: 30px; 
-    background-color: pink; 
+    background-color:#E8BCB5; 
     border: none;
     color: white;
     text-align: center;
@@ -18,13 +18,14 @@ form button{
 }
 
 form button:hover{
-    background-color: magenta; 
+    background-color: #EF8F8F; 
     cursor: pointer;
 }
 .createTask h1{
-    color: black;
+    color: #EF8F8F;
 }
 
 .createTask p{
-    color: magenta;
+    color: #EF8F8F;
+   
 }
