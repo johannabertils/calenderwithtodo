@@ -6,36 +6,36 @@
 .calendar .day{
  position: relative;
  width: calc(100% / 7);
- height:30px;
+ height:70px;
  display: inline-block;
  padding: 10px;
  box-sizing: border-box;
  z-index: 1;
  text-align: center;
+ border: 1.5px solid #E8BCB5; 
+ background-color: rgba(255,225,225, 0.3); 
 }
 
 .day{
    justify-items:  center;
    font-size: 20px;
+   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
-.day:hover{
-    background-color: #E8BCB5;
-    cursor: pointer;
-}
 
 .Calendarheader{
     max-width: 500px;
     height: 50px;
     font-size: 30px;
+    color: #313639; 
     background-color: #E8BCB5;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 .selected{
     background-color: #EF8F8F;
     border-radius: 50%;
-
-    height: 44px;
+    height:50px;
 }
 
 .arrowBack {
@@ -60,11 +60,27 @@
     cursor: pointer;
 }
 
+.days{
+    border: 1px solid #E8BCB5;
+    background-color:  #E8BCB5;
+}
+
 .days p{
     display: inline-block;
-    width:calc(100% / 7);
+    width:69px;
+    margin: 1px; 
+    text-align: center;
+    color: #313639;
+    font-weight: bold; 
+    text-transform: uppercase;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 .countedTasks{
    font-size: 10px;
+}
+
+.dayview:hover{
+    background-color: #E8BCB5;
+    cursor: pointer;
 }

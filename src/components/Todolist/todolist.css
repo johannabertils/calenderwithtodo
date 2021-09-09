@@ -4,6 +4,7 @@
 
 p{
     font-size: 15px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 .itemList button{
@@ -15,6 +16,7 @@ p{
     color: white;
     text-decoration: none;
     transition-duration: 0.4s; 
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 .itemList{

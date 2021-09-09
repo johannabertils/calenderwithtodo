@@ -90,7 +90,7 @@ export default function Calendar({ selectedDate }) {
             <div className="calendar">
                 {calendar.map((week) => (
                     <div>
-                        {week.map((day) => (
+                        {week.map((day) => ( 
                             <div className="day" id={day} setvalue={checkLocalStorage(day)}
                                 onClick={() => { setM(day); targetedDay(day); }}>
                                 <div className={m.isSame(day, "day") ? "selected" : ""}> {day.format("D").toString()} <p className="countedTasks">Tasks: 1</p></div>
@@ -98,6 +98,7 @@ export default function Calendar({ selectedDate }) {
 
                         ))}
                     </div>
+                 
                 ))}
             </div></div>)
 

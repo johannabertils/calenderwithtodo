@@ -64,9 +64,9 @@ export default function App() {
     return (
         <div className="main">
             <div className="calendar"> <Calendar selectedDate={getSelectedDate} /></div>
-            <div>
-            <div className="createtask"><CreateTask inputText={task} newTask={saveNewTask} /></div>
-            <div className="DayView"><DayView selectedDateValue = {selectedDate} /></div>
+            <div className="sideBar" >
+            <div className="DayView"><h1>Tasks</h1><DayView selectedDateValue = {selectedDate} /></div><br/>
+            <div className="createtask"><CreateTask selectedDateValue = {selectedDate} inputText={task} newTask={saveNewTask} /></div><br/>
             <div className="ToDoList">< ToDoList /></div>
             </div>
 

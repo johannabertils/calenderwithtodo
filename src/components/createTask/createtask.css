@@ -15,6 +15,7 @@ form button{
     text-align: center;
     text-decoration: none;
     transition-duration: 0.4s; 
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 form button:hover{
@@ -23,9 +24,11 @@ form button:hover{
 }
 .createTask h1{
     color: #EF8F8F;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 .createTask p{
     color: #EF8F8F;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
    
 }

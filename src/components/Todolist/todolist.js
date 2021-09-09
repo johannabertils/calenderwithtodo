@@ -17,7 +17,7 @@ export default function ToDoList() {
     function showItemsOnClick(evt) {
         evt.preventDefault();
         setShowList(true);
-        let newButton = "update do-to-list";
+        let newButton = "Update do-to-list";
         setbutton(newButton)
         let dataFromLocalStorage = localStorage.getItem('data');
         if (dataFromLocalStorage === null) {

@@ -66,6 +66,6 @@ export default function Dayview({ selectedDateValue }) {
     }
 
 
-    return <div><h1>{selectedDateValue}</h1><p>{list}</p></div>;
+    return <div><h2>{selectedDateValue}</h2><p>{list}</p></div>;
 
 }
