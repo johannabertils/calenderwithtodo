@@ -11,6 +11,9 @@ export default function App() {
     const [selectedDate, setDate] = useState();
     const [task, setTask] = useState();
     const [array, setArray] = useState();
+    const [error, seterror] = useState();
+
+    const nodate = <div>{error}</div>;
 
     // Get value of date from calendar and update selectedDate with setDate 
 
@@ -33,18 +36,27 @@ export default function App() {
         const taskDate = selectedDate;
         const tasktodo = getTask;
         const key = Math.random();
+
+        if (selectedDate == null){
+            console.log("wrong");
+           let errorMsg = <div>No date has been selected</div>;
+           seterror(errorMsg); 
+        } else {
+            const myArray = {
+                id: key,
+                date: taskDate,
+                task: tasktodo,
+                completed: false
+            }
+            setArray(myArray)
+        }
         // console.log(key);
         // console.log(taskDate);
 
-        const myArray = {
-            id: key,
-            date: taskDate,
-            task: tasktodo,
-            completed: false
-        }
+       
         // console.log(myArray);
         // console.log(myArray.id);
-        setArray(myArray)
+     
         // console.log(array);
     }
 
@@ -66,7 +78,7 @@ export default function App() {
             <div className="calendar"> <Calendar selectedDate={getSelectedDate} dataFromParent={task}/></div>
             <div className="sideBar" >
             <div className="DayView"><h1>Tasks</h1><DayView selectedDateValue = {selectedDate} /></div><br/>
-            <div className="createtask"><CreateTask selectedDateValue = {selectedDate} inputText={task} newTask={saveNewTask} /></div><br/>
+            <div className="createtask"><CreateTask selectedDateValue = {selectedDate} inputText={task} newTask={saveNewTask} /><p>{nodate}</p></div><br/>
             <div className="ToDoList">< ToDoList /></div>
             </div>
 
