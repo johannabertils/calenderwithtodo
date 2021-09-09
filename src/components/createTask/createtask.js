@@ -8,13 +8,11 @@ class CreateTask extends React.Component {
     }
 
     onChange = (evt) => {
-        console.log("ändring skett");
         this.setState({ inputText: evt.target.value })
     }
 
     onSubmit = (evt) => {
         evt.preventDefault();
-        console.log("sparat");
         this.props.newTask(this.state.inputText); 
         this.state.inputText = "";
     }

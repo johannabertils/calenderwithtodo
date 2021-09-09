@@ -5,39 +5,36 @@ import './calendar.css';
 // creates days, per week per month
 export default function Calendar({ selectedDate }) {
 
-
     const [calendar, setCalendar] = useState([]);
     const [m, setM] = useState(moment());
-    const [text, setText] = useState("no tasks");
-    const [array, setArray] = useState();
-    const [tasks, settasks] = useState();
 
-
+    // function that writes how many tasks there is each day in the calendar
     function getTaskCount(day) {
         let dataFromLocalStorage = localStorage.getItem('data');
         let data = JSON.parse(dataFromLocalStorage)
-        let countOccurences = 0;
+
         if (data === null) {
             console.log("nodata");
         } else {
-
             let getday = day.format("MM/DD/YYYY")
-
             let countOccurences =
+
                 data.filter(function (value) {
-                    return value.date === getday;
+                    if (value.completed == false) {
+                        return value.date === getday;
+                    }
                 }).length
-        }
 
-        console.log(countOccurences);
-        switch (countOccurences) {
-            case 0: return "no tasks";
-            case 1: return "1 task";
-            default: return countOccurences.toString() + " tasks";
+            console.log(countOccurences);
+            switch (countOccurences) {
+                case 0: return "no tasks";
+                case 1: return "1 task";
+                default: return countOccurences.toString() + " tasks";
+            }
         }
-
     }
 
+    // get days, month and year values
     useEffect(() => {
         const dayToBegin = m.clone().startOf("month").startOf("week");
         const dayToEnd = m.clone().endOf("month").endOf("weeks");
@@ -64,10 +61,12 @@ export default function Calendar({ selectedDate }) {
         return m.format("YYYY")
     }
 
+    // get previousmonth
     function previousMonth() {
         return m.clone().subtract(1, "month")
     }
 
+    // get nextmonth
     function nextMonth() {
         return m.clone().add(1, "month")
     }
@@ -112,11 +111,9 @@ export default function Calendar({ selectedDate }) {
 
 
 
+    // get the clicked on day and set it in a state to send to parent
     function targetedDay(day, id) {
-        console.log(id);
         let taskDay = day.format("MM/DD/YYYY").toString();
         selectedDate(taskDay);
-        console.log("day" + day.value);
     }
-
 }
