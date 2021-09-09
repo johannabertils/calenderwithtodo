@@ -3,41 +3,59 @@ import moment from 'moment';
 import './calendar.css';
 
 // creates days, per week per month
-export default function Calendar({ selectedDate }) {
+export default function Calendar({ selectedDate, dataFromParent}) {
 
 
     const [calendar, setCalendar] = useState([]);
     const [m, setM] = useState(moment());
     const [text, setText] = useState("no tasks");
     const [array, setArray] = useState();
+    const [tasks, settasks] = useState();
 
+    // when settask in App.js get updated start checkLocalStorage function
+    useEffect(() => {
+        let info = dataFromParent; 
+        settasks(info); 
+        checkLocalStorage()
+    }, [dataFromParent])
 
 
     const Text = () => <div>{text}</div>;
 
-    function checkLocalStorage(day) {
+    function checkLocalStorage() {
         let getDataFromLocalStorage = localStorage.getItem('data');
         let data = JSON.parse(getDataFromLocalStorage)
-        let getday = day.format("MM/DD/YYYY")
         console.log("hej");
 
         if (getDataFromLocalStorage === null) {
             console.log("no data");
         } else {
-            let countOccurences =
-            data.filter(function (value) {
-                return value.date === getday;
-            }).length
+            console.log("there is data");
+        }
+
+
+        // const newArray = {
+        //     date: key,
+        //     date: taskDate,
+        //     task: tasktodo,
+        //     completed: false
+        // }
+        // let newArray = 
+    }
+
+       // let getday = day.format("MM/DD/YYYY")
+            // let countOccurences =
+            // data.filter(function (value) {
+            //     return value.date === getday;
+            // }).length
 
             // if (countOccurences > 0) {
             //     console.log(getday + "has" + countOccurences + "tasks");
             // }
 
-            return (
-                countOccurences
-            )
-        }
-    }
+            // return (
+            //     countOccurences
+            // )
 
     useEffect(() => {
         const dayToBegin = m.clone().startOf("month").startOf("week");
@@ -100,7 +118,7 @@ export default function Calendar({ selectedDate }) {
                         {week.map((day) => (
                             <div className="day" id={day}
                                 onClick={() => { setM(day); targetedDay(day); }}>
-                                <div className={m.isSame(day, "day") ? "selected" : ""} key={checkLocalStorage(day)}> {day.format("D").toString()}{}
+                                <div className={m.isSame(day, "day") ? "selected" : ""} > {day.format("D").toString()}{}
                                     <p className="countedTasks"> {text}</p>
                                 </div>
                             </div>

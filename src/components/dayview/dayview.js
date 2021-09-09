@@ -19,6 +19,9 @@ export default function Dayview({ selectedDateValue }) {
         let dataFromLocalStorage = localStorage.getItem('data');
         if (dataFromLocalStorage === null) {
             console.log("no data");
+            let nomatch = <div>You have no tasks!</div>
+            setnumberText(nomatch)
+
         } else {
             showTasksOfSelectedDate(clickedOnDate);
         }
