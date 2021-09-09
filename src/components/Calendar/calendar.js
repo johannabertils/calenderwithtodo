@@ -5,9 +5,39 @@ import './calendar.css';
 // creates days, per week per month
 export default function Calendar({ selectedDate }) {
 
+
     const [calendar, setCalendar] = useState([]);
     const [m, setM] = useState(moment());
-    const [count, setCount] = useState(moment());
+    const [text, setText] = useState("no tasks");
+    const [array, setArray] = useState();
+
+
+
+    const Text = () => <div>{text}</div>;
+
+    function checkLocalStorage(day) {
+        let getDataFromLocalStorage = localStorage.getItem('data');
+        let data = JSON.parse(getDataFromLocalStorage)
+        let getday = day.format("MM/DD/YYYY")
+        console.log("hej");
+
+        if (getDataFromLocalStorage === null) {
+            console.log("no data");
+        } else {
+            let countOccurences =
+            data.filter(function (value) {
+                return value.date === getday;
+            }).length
+
+            // if (countOccurences > 0) {
+            //     console.log(getday + "has" + countOccurences + "tasks");
+            // }
+
+            return (
+                countOccurences
+            )
+        }
+    }
 
     useEffect(() => {
         const dayToBegin = m.clone().startOf("month").startOf("week");
@@ -20,7 +50,6 @@ export default function Calendar({ selectedDate }) {
                 Array(7)
                     .fill(0)
                     .map(() => day.add(1, "day").clone())
-                    
             );
         }
         setCalendar(viewCalendar);
@@ -42,28 +71,6 @@ export default function Calendar({ selectedDate }) {
 
     function nextMonth() {
         return m.clone().add(1, "month")
-    }
-
-    function checkLocalStorage(day) {
-        let getDataFromLocalStorage = localStorage.getItem('data');
-        let data = JSON.parse(getDataFromLocalStorage)
-        let getday = day.format("MM/DD/YYYY")
-
-        if (getDataFromLocalStorage === null) {
-            console.log("no data");
-        } else {
-            checkOccurences(data, getday)
-        }
-
-    }
-
-    function checkOccurences(data, getday) {
-        let countOccurences =
-            data.filter(function (value) {
-                return value.date === getday;
-            }).length
-
-        console.log(getday + "count" + "" + countOccurences);
     }
 
     // Print out the calander
@@ -90,24 +97,27 @@ export default function Calendar({ selectedDate }) {
             <div className="calendar">
                 {calendar.map((week) => (
                     <div>
-                        {week.map((day) => ( 
-                            <div className="day" id={day} setvalue={checkLocalStorage(day)}
+                        {week.map((day) => (
+                            <div className="day" id={day}
                                 onClick={() => { setM(day); targetedDay(day); }}>
-                                <div className={m.isSame(day, "day") ? "selected" : ""}> {day.format("D").toString()} <p className="countedTasks">Tasks: 1</p></div>
+                                <div className={m.isSame(day, "day") ? "selected" : ""} key={checkLocalStorage(day)}> {day.format("D").toString()}{}
+                                    <p className="countedTasks"> {text}</p>
+                                </div>
                             </div>
-
                         ))}
                     </div>
-                 
+
                 ))}
-            </div></div>)
+            </div>
+            </div>)
 
 
 
-    function targetedDay(day) {
+    function targetedDay(day, id) {
+        console.log(id);
         let taskDay = day.format("MM/DD/YYYY").toString();
         selectedDate(taskDay);
-        console.log("day" + day.key);
+        console.log("day" + day.value);
     }
 
 }

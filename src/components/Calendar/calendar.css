@@ -34,8 +34,8 @@
 
 .selected{
     background-color: #EF8F8F;
-    border-radius: 50%;
     height:50px;
+    border-radius: 3px;
 }
 
 .arrowBack {
@@ -80,7 +80,7 @@
    font-size: 10px;
 }
 
-.dayview:hover{
-    background-color: #E8BCB5;
+.day:hover{
+    background-color: #ffe7e3;
     cursor: pointer;
 }

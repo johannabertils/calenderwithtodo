@@ -30,12 +30,14 @@
   background-color: rgba(255, 225, 225, 0.3);
   border: 1.5px solid #E8BCB5;
   align-content: center;
+
 }
 
 .DayView h1 {
   font-size: 30px;
   color: #313639;
   background-color: #E8BCB5;
+  border-radius: 10px;
   text-align: center;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
