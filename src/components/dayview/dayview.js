@@ -8,8 +8,8 @@ export default function Dayview({ selectedDateValue }) {
     const [listText, setlistText] = useState();
     const [nummberText, setnumberText] = useState();
 
-    const list = <div>{listText}</div>;
-    const occurrences = <div>{nummberText}</div>;
+    const list = <p>{listText}</p>;
+    const occurrences = <p>{nummberText}</p>;
 
     useEffect(() => {
         setclickedOnDate(selectedDateValue);
@@ -19,7 +19,7 @@ export default function Dayview({ selectedDateValue }) {
         let dataFromLocalStorage = localStorage.getItem('data');
         if (dataFromLocalStorage === null) {
             console.log("no data");
-            let nomatch = <div>You have no tasks!</div>
+            let nomatch = <p>You have no tasks!</p>
             setnumberText(nomatch)
 
         } else {
@@ -63,7 +63,7 @@ export default function Dayview({ selectedDateValue }) {
             }).length 
 
             if (countOccurences > 0){
-        setnumberText(<div>You have {countOccurences} tasks this day</div>)
+        setnumberText(<p>You have {countOccurences} tasks this day</p>)
     }
 
         let matchfound = "";
@@ -71,12 +71,12 @@ export default function Dayview({ selectedDateValue }) {
             if (item.date === clickedOnDate && item.completed === false) {
                 matchfound = true;
 
-                return <div className="dayviewList"><p> {item.date} {item.task} <button onClick={() => done(item)}> Mark as done</button></p></div>;
+                return <div className="dayviewList"><p> {item.task} <button onClick={() => done(item)}> Mark as done</button></p></div>;
             }
         });
         setlistText(writeText)
         if (!matchfound && clickedOnDate != undefined){
-            let nomatch = <div>You have no tasks to do this day!</div>
+            let nomatch = <p>You have no tasks to do this day!</p>
             setnumberText(nomatch)
         }
     }

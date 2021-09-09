@@ -3,7 +3,7 @@ import moment from 'moment';
 import './calendar.css';
 
 // creates days, per week per month
-export default function Calendar({ selectedDate, dataFromParent}) {
+export default function Calendar({ selectedDate }) {
 
 
     const [calendar, setCalendar] = useState([]);
@@ -12,50 +12,31 @@ export default function Calendar({ selectedDate, dataFromParent}) {
     const [array, setArray] = useState();
     const [tasks, settasks] = useState();
 
-    // when settask in App.js get updated start checkLocalStorage function
-    useEffect(() => {
-        let info = dataFromParent; 
-        settasks(info); 
-        checkLocalStorage()
-    }, [dataFromParent])
 
-
-    const Text = () => <div>{text}</div>;
-
-    function checkLocalStorage() {
-        let getDataFromLocalStorage = localStorage.getItem('data');
-        let data = JSON.parse(getDataFromLocalStorage)
-        console.log("hej");
-
-        if (getDataFromLocalStorage === null) {
-            console.log("no data");
+    function getTaskCount(day) {
+        let dataFromLocalStorage = localStorage.getItem('data');
+        let data = JSON.parse(dataFromLocalStorage)
+        let countOccurences = 0;
+        if (data === null) {
+            console.log("nodata");
         } else {
-            console.log("there is data");
+
+            let getday = day.format("MM/DD/YYYY")
+
+            let countOccurences =
+                data.filter(function (value) {
+                    return value.date === getday;
+                }).length
         }
 
+        console.log(countOccurences);
+        switch (countOccurences) {
+            case 0: return "no tasks";
+            case 1: return "1 task";
+            default: return countOccurences.toString() + " tasks";
+        }
 
-        // const newArray = {
-        //     date: key,
-        //     date: taskDate,
-        //     task: tasktodo,
-        //     completed: false
-        // }
-        // let newArray = 
     }
-
-       // let getday = day.format("MM/DD/YYYY")
-            // let countOccurences =
-            // data.filter(function (value) {
-            //     return value.date === getday;
-            // }).length
-
-            // if (countOccurences > 0) {
-            //     console.log(getday + "has" + countOccurences + "tasks");
-            // }
-
-            // return (
-            //     countOccurences
-            // )
 
     useEffect(() => {
         const dayToBegin = m.clone().startOf("month").startOf("week");
@@ -119,7 +100,7 @@ export default function Calendar({ selectedDate, dataFromParent}) {
                             <div className="day" id={day}
                                 onClick={() => { setM(day); targetedDay(day); }}>
                                 <div className={m.isSame(day, "day") ? "selected" : ""} > {day.format("D").toString()}{}
-                                    <p className="countedTasks"> {text}</p>
+                                    <p className="countedTasks"> {getTaskCount(day)}</p>
                                 </div>
                             </div>
                         ))}
@@ -127,7 +108,7 @@ export default function Calendar({ selectedDate, dataFromParent}) {
 
                 ))}
             </div>
-            </div>)
+        </div>)
 
 
 

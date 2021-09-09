@@ -5,23 +5,23 @@ export default function ToDoList() {
     const [showList, setShowList] = useState(false);
     const [text, setText] = useState();
     const [localStorageArray, setlocalStorageArray] = useState();
-    const [button, setbutton] = useState("Show to-do-list");
+    const [button, setbutton] = useState("Show all tasks");
 
    
 
     // set text that will show on click to the state text
-    const Text = () => <div>{text}</div>;
+    const Text = () => <p>{text}</p>;
     // const buttonText = () => button;
 
     // when clicking on showlist btn -> if value in localstorage acitvate printList function
     function showItemsOnClick(evt) {
         evt.preventDefault();
         setShowList(true);
-        let newButton = "Update do-to-list";
+        let newButton = "Update list";
         setbutton(newButton)
         let dataFromLocalStorage = localStorage.getItem('data');
         if (dataFromLocalStorage === null) {
-            let noTasks = <div className="notaskview"> <p className="notasksmessage">You have no tasks to do!</p> </div>;
+            let noTasks = <p className="notaskview"> You have no tasks to do! </p>;
             setText(noTasks)
         } else {
             printList();
