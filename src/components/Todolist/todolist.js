@@ -3,24 +3,61 @@ import './todolist.css';
 
 export default function ToDoList() {
     const [showList, setShowList] = useState(false);
+    const [showC, setshowC] = useState(false);
+    const [completed, setCompleted] = useState();
     const [text, setText] = useState();
-    const [button, setbutton] = useState("Show all tasks");
 
     // set text that will show when clicking on btn
     const Text = () => <p>{text}</p>;
+    const CompletedText = () => <p>{completed}</p>;
 
     // when clicking on showlist btn -> if value in localstorage acitvate printList function
     function showItemsOnClick(evt) {
         evt.preventDefault();
+        setshowC(false);
         setShowList(true);
-        let newButton = "Update list";
-        setbutton(newButton)
         let dataFromLocalStorage = localStorage.getItem('data');
         if (dataFromLocalStorage === null) {
             let noTasks = <p className="notaskview"> You have no tasks to do! </p>;
             setText(noTasks)
         } else {
             printList();
+        }
+    }
+
+    function showCompletedTasks(evt) {
+        evt.preventDefault();
+        console.log("click");
+        setShowList(false);
+        setshowC(true);
+
+        let dataFromLocalStorage = localStorage.getItem('data');
+        if (dataFromLocalStorage === null) {
+            let noCompleted = "No finished tasks yet!";
+            setCompleted(noCompleted)
+        } else {
+            showFinishedTasks();
+        }
+    }
+
+    function showFinishedTasks() {
+        let data = localStorage.getItem('data');
+        let parsedData = JSON.parse(data);
+        let foundincomplitedTasks = false;
+        let showTasks = parsedData
+            .map(item => {
+                if (item.completed === true) {
+                    foundincomplitedTasks = true; 
+                    return <div className="itemList">
+                        <p className="taskname"> {item.date}  {item.task}
+                            <button className="donebtn">Marked as done</button></p></div>
+                }
+            })
+        setCompleted(showTasks)
+
+        if (foundincomplitedTasks === false){
+            let noCompletedTasks = <div className="taskname"> <p className="notasksmessage">You have no completed tasks!</p> </div>;
+            setCompleted(noCompletedTasks)
         }
     }
 
@@ -69,8 +106,10 @@ export default function ToDoList() {
     }
 
     return <div className="todolist">
-        <button className="showlistbtn" onClick={showItemsOnClick}>{button}</button>
+        <button className="showlistbtn" onClick={showItemsOnClick}>Show all tasks</button>
+        <button className="showlistbtn" onClick={showCompletedTasks}>Show completed tasks</button>
         {showList ? <Text /> : null}
+        {showC ? <CompletedText /> : null}
     </div>;
 
 }

@@ -24,8 +24,6 @@ export default function Calendar({ selectedDate }) {
                         return value.date === getday;
                     }
                 }).length
-
-            console.log(countOccurences);
             switch (countOccurences) {
                 case 0: return "no tasks";
                 case 1: return "1 task";

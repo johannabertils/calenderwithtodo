@@ -34,7 +34,6 @@ export default function App() {
         const key = Math.random();
 
         if (selectedDate == null) {
-            console.log("wrong");
             let errorMsg = <div>No date has been selected</div>;
             seterror(errorMsg);
         } else {

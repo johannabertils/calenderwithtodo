@@ -19,7 +19,6 @@ export default function Dayview({ selectedDateValue }) {
     useEffect(() => {
         let dataFromLocalStorage = localStorage.getItem('data');
         if (dataFromLocalStorage === null) {
-            console.log("no data");
             let nomatch = <p>You have no tasks!</p>
             setnumberText(nomatch)
 
