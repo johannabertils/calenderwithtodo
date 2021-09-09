@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './todolist.css';
 
 export default function ToDoList() {
@@ -53,7 +53,7 @@ export default function ToDoList() {
                             <button className="donebtn">Marked as done</button></p></div>
                 }
             })
-        setCompleted(showTasks)
+ setCompleted(showTasks)
 
         if (foundincomplitedTasks === false){
             let noCompletedTasks = <div className="taskname"> <p className="notasksmessage">You have no completed tasks!</p> </div>;

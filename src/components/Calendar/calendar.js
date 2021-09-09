@@ -12,24 +12,26 @@ export default function Calendar({ selectedDate }) {
     function getTaskCount(day) {
         let dataFromLocalStorage = localStorage.getItem('data');
         let data = JSON.parse(dataFromLocalStorage)
+        let message =  "no tasks";
 
         if (data === null) {
-            console.log("nodata");
+           return message;
         } else {
             let getday = day.format("MM/DD/YYYY")
             let countOccurences =
-
                 data.filter(function (value) {
-                    if (value.completed == false) {
+                    if (value.completed === false) {
                         return value.date === getday;
                     }
                 }).length
+
             switch (countOccurences) {
                 case 0: return "no tasks";
                 case 1: return "1 task";
                 default: return countOccurences.toString() + " tasks";
             }
         }
+
     }
 
     // get days, month and year values
