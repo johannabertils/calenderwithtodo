@@ -12,10 +12,10 @@ export default function Calendar({ selectedDate }) {
     function getTaskCount(day) {
         let dataFromLocalStorage = localStorage.getItem('data');
         let data = JSON.parse(dataFromLocalStorage)
-        let message =  "no tasks";
+        let message = "no tasks";
 
         if (data === null) {
-           return message;
+            return message;
         } else {
             let getday = day.format("MM/DD/YYYY")
             let countOccurences =

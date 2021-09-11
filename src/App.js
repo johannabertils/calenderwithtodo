@@ -66,7 +66,7 @@ export default function App() {
             <div className="sideBar">
                 <div className="DayView"><h1>Tasks</h1><DayView selectedDateValue={selectedDate} /></div><br />
                 <div className="createtask"><CreateTask selectedDateValue={selectedDate} inputText={task} newTask={saveNewTask} />
-                <p>{nodate}</p></div><br />
+                    <p>{nodate}</p></div><br />
                 <div className="ToDoList">< ToDoList /></div>
             </div>
 

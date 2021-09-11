@@ -47,15 +47,15 @@ export default function ToDoList() {
         let showTasks = parsedData
             .map(item => {
                 if (item.completed === true) {
-                    foundincomplitedTasks = true; 
+                    foundincomplitedTasks = true;
                     return <div className="itemList">
                         <p className="taskname"> {item.date}  {item.task}
-                            <button className="donebtn">Marked as done</button></p></div>
+                            <button className="donebtn">Task is done</button></p></div>
                 }
             })
- setCompleted(showTasks)
+        setCompleted(showTasks)
 
-        if (foundincomplitedTasks === false){
+        if (foundincomplitedTasks === false) {
             let noCompletedTasks = <div className="taskname"> <p className="notasksmessage">You have no completed tasks!</p> </div>;
             setCompleted(noCompletedTasks)
         }

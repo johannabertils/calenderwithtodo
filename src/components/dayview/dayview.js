@@ -72,7 +72,7 @@ export default function Dayview({ selectedDateValue }) {
             }
         });
         setlistText(writeText)
-        
+
         if (!matchfound && clickedOnDate !== undefined) {
             let nomatch = <p>You have no tasks to do this day!</p>
             setnumberText(nomatch)

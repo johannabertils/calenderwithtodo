@@ -1,37 +1,38 @@
-input{
+input {
     background-color: #E8BCB5;
-    border: 1px solid #EF8F8F; 
+    border: 1px solid #EF8F8F;
     width: 200px;
     height: 30px;
     color: #313639;
     font-size: 20px;
 }
 
-form button{
+form button {
     font-size: 15px;
-    height: 30px; 
-    background-color:#E8BCB5; 
-    border: 1px solid #EF8F8F; 
+    height: 30px;
+    background-color: #E8BCB5;
+    border: 1px solid #EF8F8F;
     color: white;
     text-align: center;
     text-decoration: none;
-    transition-duration: 0.4s; 
+    transition-duration: 0.4s;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
-form button:hover{
-    background-color: #EF8F8F; 
+form button:hover {
+    background-color: #EF8F8F;
     cursor: pointer;
 }
-.createTask h1{
+
+.createTask h1 {
     color: #EF8F8F;
-    font-size: 25px; 
+    font-size: 25px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
-.createTask p{
+.createTask p {
     color: #EF8F8F;
     font-size: 12px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-   
+
 }

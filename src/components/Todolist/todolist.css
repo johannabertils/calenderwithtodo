@@ -1,40 +1,40 @@
-.todolist{
+.todolist {
     max-width: 400px;
 }
 
-p{
+p {
     font-size: 15px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
-.itemList button{
+.itemList button {
     font-size: 15px;
-    height: 30px; 
-    float: right; 
-    background-color: #E8BCB5; 
+    height: 30px;
+    float: right;
+    background-color: #E8BCB5;
     border: none;
     color: white;
     text-decoration: none;
-    transition-duration: 0.4s; 
+    transition-duration: 0.4s;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
-.itemList{
+.itemList {
     color: purple;
-    width: 400px; 
-    height: 20px; 
-    border-bottom: 2px dotted #E8BCB5; 
+    width: 400px;
+    height: 20px;
+    border-bottom: 2px dotted #E8BCB5;
 
 }
 
-.notaskview{
-    width: 400px; 
+.notaskview {
+    width: 400px;
     font-size: 20px;
 }
 
 
-.showlistbtn{
-    background-color: #E8BCB5; 
+.showlistbtn {
+    background-color: #E8BCB5;
     border: none;
     color: white;
     padding: 15px 20px;
@@ -42,15 +42,15 @@ p{
     text-decoration: none;
     display: inline-block;
     font-size: 18px;
-    transition-duration: 0.4s; 
+    transition-duration: 0.4s;
 }
 
-.showlistbtn:hover{
-    background-color: #EF8F8F; 
+.showlistbtn:hover {
+    background-color: #EF8F8F;
     cursor: pointer;
 }
 
-.itemList button:hover{
-    background-color: #EF8F8F; 
+.itemList button:hover {
+    background-color: #EF8F8F;
     cursor: pointer;
 }
