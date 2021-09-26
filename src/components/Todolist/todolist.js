@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './todolist.css';
 
-export default function ToDoList() {
+export default function ToDoList(checkForUpdate) {
     const [showList, setShowList] = useState(false);
     const [showC, setshowC] = useState(false);
     const [completed, setCompleted] = useState();
     const [text, setText] = useState();
+
 
     // set text that will show when clicking on btn
     const Text = () => <p>{text}</p>;
@@ -24,6 +25,16 @@ export default function ToDoList() {
             printList();
         }
     }
+
+    useEffect(() => {
+       console.log("updated");
+       let dataFromLocalStorage = localStorage.getItem('data');
+       if (dataFromLocalStorage === null) {
+          console.log("nodata");
+       } else {
+           printList();
+       }
+    }, [checkForUpdate]);
 
     function showCompletedTasks(evt) {
         evt.preventDefault();

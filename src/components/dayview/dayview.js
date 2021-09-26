@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './dayview.css';
 
-export default function Dayview({ selectedDateValue }) {
+export default function Dayview({ selectedDateValue, checkForUpdate}) {
 
     const [clickedOnDate, setclickedOnDate] = useState(0);
     const [listText, setlistText] = useState();
@@ -14,6 +14,18 @@ export default function Dayview({ selectedDateValue }) {
     useEffect(() => {
         setclickedOnDate(selectedDateValue);
     }, [selectedDateValue]);
+
+    useEffect(() => {
+        console.log("updated");
+        let dataFromLocalStorage = localStorage.getItem('data');
+        if (dataFromLocalStorage === null) {
+          console.log("no match");
+        } else {
+            showTasksOfSelectedDate(clickedOnDate);
+        }
+    
+     }, [checkForUpdate]);
+ 
 
     // get info from local storage and see if the selected day has any tasks
     useEffect(() => {

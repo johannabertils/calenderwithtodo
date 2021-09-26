@@ -12,6 +12,7 @@ export default function App() {
     const [task, setTask] = useState();
     const [array, setArray] = useState();
     const [error, seterror] = useState();
+    const [listUpdated, setListUpdated] = useState(false);
 
     // error message if no date
     const nodate = <div>{error}</div>;
@@ -57,17 +58,19 @@ export default function App() {
             localStorage.clear();
             newArray.push(array);
             localStorage.setItem('data', JSON.stringify(newArray));
+            setListUpdated(newArray);
         }
     }, [array]);
 
+        
     return (
         <div className="main">
             <div className="calendar"> <Calendar selectedDate={getSelectedDate} /></div>
             <div className="sideBar">
-                <div className="DayView"><h1>Tasks</h1><DayView selectedDateValue={selectedDate} /></div><br />
+                <div className="DayView"><h1>Tasks</h1><DayView selectedDateValue={selectedDate} checkForUpdate={listUpdated}  /></div><br />
                 <div className="createtask"><CreateTask selectedDateValue={selectedDate} inputText={task} newTask={saveNewTask} />
                     <p>{nodate}</p></div><br />
-                <div className="ToDoList">< ToDoList /></div>
+                <div className="ToDoList">< ToDoList checkForUpdate={listUpdated} /></div>
             </div>
 
         </div>
