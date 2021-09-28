@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './dayview.css';
 
-export default function Dayview({ selectedDateValue, checkForUpdate}) {
-
+export default function Dayview(props) {
     const [clickedOnDate, setclickedOnDate] = useState(0);
     const [listText, setlistText] = useState();
     const [nummberText, setnumberText] = useState();
@@ -12,20 +11,19 @@ export default function Dayview({ selectedDateValue, checkForUpdate}) {
 
     // acitvate dayview on signal from selectedDateValue from app.js 
     useEffect(() => {
-        setclickedOnDate(selectedDateValue);
-    }, [selectedDateValue]);
+        setclickedOnDate(props.selectedDateValue);
+    }, [props.selectedDateValue]);
+
+    // check for updates of tasks and update list 
 
     useEffect(() => {
-        console.log("updated");
         let dataFromLocalStorage = localStorage.getItem('data');
         if (dataFromLocalStorage === null) {
-          console.log("no match");
+          console.log("no data");
         } else {
             showTasksOfSelectedDate(clickedOnDate);
         }
-    
-     }, [checkForUpdate]);
- 
+     }, [props.checkForUpdate, props.changeStatus]);
 
     // get info from local storage and see if the selected day has any tasks
     useEffect(() => {
@@ -43,6 +41,8 @@ export default function Dayview({ selectedDateValue, checkForUpdate}) {
     function done(item) {
         let id = item.id;
         removeItem(id);
+        props.changeStatus(id);
+    
     }
 
     // if task is selected as done change completed to true
@@ -69,10 +69,12 @@ export default function Dayview({ selectedDateValue, checkForUpdate}) {
 
         let countOccurences =
             parseTasks.filter(function (value) {
+                if (value.completed === false) {
                 return value.date === clickedOnDate;
+            }
             }).length
 
-        if (countOccurences > 0) {
+        if (countOccurences > 0 ) {
             setnumberText(<p>You have {countOccurences} tasks this day</p>)
         }
         let matchfound = "";
@@ -91,6 +93,6 @@ export default function Dayview({ selectedDateValue, checkForUpdate}) {
         }
     }
 
-    return <div><h2>{selectedDateValue}</h2><p>{occurrences}</p><p>{list}</p></div>;
+    return <div><h2>{props.selectedDateValue}</h2><p>{occurrences}</p><p>{list}</p></div>;
 
 }

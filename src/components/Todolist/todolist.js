@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './todolist.css';
 
-export default function ToDoList(checkForUpdate) {
+export default function ToDoList(props) {
     const [showList, setShowList] = useState(false);
     const [showC, setshowC] = useState(false);
     const [completed, setCompleted] = useState();
@@ -34,7 +34,7 @@ export default function ToDoList(checkForUpdate) {
        } else {
            printList();
        }
-    }, [checkForUpdate]);
+    }, [props.checkForUpdate, props.changeStatus]);
 
     function showCompletedTasks(evt) {
         evt.preventDefault();
@@ -77,6 +77,8 @@ export default function ToDoList(checkForUpdate) {
         let id = item.id;
         changeStatus(id);
         printList();
+        props.changeStatus(id);
+
     }
 
     //  change status of task to completed = true
@@ -89,6 +91,7 @@ export default function ToDoList(checkForUpdate) {
                 item.completed = true;
             }
             return item;
+
         });
         localStorage.clear();
         localStorage.setItem('data', JSON.stringify(newArray));
@@ -104,9 +107,11 @@ export default function ToDoList(checkForUpdate) {
             .map(item => {
                 if (item.completed === false) {
                     foundincomplite = true;
+                    const arrayId = item.id;
+
                     return <div className="itemList">
                         <p className="taskname"> {item.date}  {item.task}
-                            <button className="donebtn" onClick={() => markAsDone(item)}> Mark as done</button></p></div>
+                            <button className="donebtn" onClick={() => markAsDone(item)} > Mark as done</button></p></div>
                 }
             })
         if (foundincomplite === false) {
